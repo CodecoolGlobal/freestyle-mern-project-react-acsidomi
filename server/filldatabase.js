@@ -7,7 +7,6 @@ import triviaSchema from "./model/TriviaSchema.js";
 dotenv.config({
   path: path.join("./.env"),
 });
-const baseURL = "https://api.api-ninjas.com/v1/trivia?limit=30";
 
 const categories = ["artliterature","language","sciencenature","general",
 "fooddrink","peopleplaces","geography","historyholidays","entertainment",

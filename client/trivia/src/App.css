@@ -36,3 +36,24 @@
     transform: rotate(360deg);
   }
 }
+
+body{
+
+  background-image: url("https://wallpapers.com/images/hd/question-mark-background-tghys36vjksf02r6.jpg");
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+  button{
+  background-color: black;
+  color:white;
+  
+}
+button:hover{
+  cursor: pointer;
+  background-color: white;
+  color:black
+}
+
+img{
+  height: 470px;
+}
