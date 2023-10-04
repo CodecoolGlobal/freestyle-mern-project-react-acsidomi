@@ -20,7 +20,7 @@ function Quiz(props) {
     "Sport & Leisure",
   ];
 
-  const categories2 = [
+const categories2 = [
     "artliterature",
     "language",
     "sciencenature",
@@ -44,6 +44,7 @@ function Quiz(props) {
   const [questionIndex, setQuestionIndex] = useState(0)
   const [incorrectAnswer, setIncorrectAnswer] = useState(false)
   const [hiddenAnswer, setHiddenAnswer] = useState(true)
+  const [answerStreak, setAnswerStreak] = useState(0)
 
   async function handleChange(event) {
     const selectedCategory = event.target.value;
@@ -78,6 +79,7 @@ function Quiz(props) {
             let answeredQuest = [...answeredQuestions] 
             answeredQuest.push(questionsOfCategory[questionIndex]._id)
             setAnsweredQuestions(answeredQuest)
+            setAnswerStreak(answerStreak+1)
             setNextQuestion(true);
             return console.log("Correct!");
         } else {
@@ -95,6 +97,7 @@ function Quiz(props) {
         setQuestionIndex(0)
         setIncorrectAnswer(false)
         setHiddenAnswer(true)
+        setAnswerStreak(0)
     }
     
     function showAnswer() {
@@ -135,12 +138,15 @@ function Quiz(props) {
             <>
             <p>{questionsOfCategory[questionIndex].question}</p>
             <p>Incorrect Answer, try again.</p>
+            <p>Final score: {answerStreak}</p>
             <p hidden={hiddenAnswer}>{questionsOfCategory[questionIndex].answer}</p>
             <button onClick={showAnswer}>Show answer</button>
             <button onClick={handleTryAgain}>Try again</button>
             </>
             : (
             <>
+            <p>Current score: {answerStreak}</p>
+            <p>The answer was correct</p>
             <button onClick={handleNext}>Next question</button>
             </>
         )}
