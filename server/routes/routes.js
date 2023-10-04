@@ -33,4 +33,21 @@ router.get("/:category", async (req, res) => {
     }
 });
 
+router.post("/addNew", async (req, res) =>{
+    try{
+        const {category, question, answer} = req.body;
+        const newQuestion = new TriviaSchema({
+            category,
+            question,
+            answer
+        })
+        const savedQuestion = await newQuestion.save()
+        res.json(savedQuestion)
+    }
+    catch (error){
+        console.error("Cannot save the new data",error)
+        res.status(500).json({ message: "Server error" });
+    }
+})
+
 export default router
