@@ -1,3 +1,4 @@
+
 import React from "react";
 import { useState, useEffect } from "react";
 
@@ -41,6 +42,8 @@ function Quiz(props) {
   const [nextQuestion, setNextQuestion] = useState(false);
   const [answeredQuestions, setAnsweredQuestions] = useState([])
   const [questionIndex, setQuestionIndex] = useState(0)
+  const [incorrectAnswer, setIncorrectAnswer] = useState(false)
+  const [hiddenAnswer, setHiddenAnswer] = useState(true)
 
   async function handleChange(event) {
     const selectedCategory = event.target.value;
@@ -78,15 +81,29 @@ function Quiz(props) {
             setNextQuestion(true);
             return console.log("Correct!");
         } else {
+            setIncorrectAnswer(true)
             setNextQuestion(false);
             return console.log("Try again!");
         }
     }
+
+    function handleTryAgain(){
+        setQuestionsOfCategory([])
+        setShowQuestion(false)
+        setNextQuestion(false)
+        setAnsweredQuestions([])
+        setQuestionIndex(0)
+        setIncorrectAnswer(false)
+        setHiddenAnswer(true)
+    }
+    
+    function showAnswer() {
+        setHiddenAnswer(false)
+    }
     
     
-    console.log("questinIndex", questionIndex)
     console.log("random question",questionsOfCategory[questionIndex]);
-    console.log('answered', answeredQuestions)
+    
     return (
         <div className="categories">
         <label>Select a category: </label>
@@ -102,7 +119,7 @@ function Quiz(props) {
         </select>
         {!showQuestion ? (
             <button onClick={() => setShowQuestion(true)}>Show question</button>
-        ) : !nextQuestion ? (
+        ) : !nextQuestion && !incorrectAnswer ? (
             <>
             <p>{questionsOfCategory[questionIndex].question}</p>
             <form onSubmit={handleAnswer}>
@@ -114,7 +131,15 @@ function Quiz(props) {
                 <button type="submit">Send answer</button>
             </form>
             </>
-        ) : (
+        ) : !nextQuestion && incorrectAnswer ? 
+            <>
+            <p>{questionsOfCategory[questionIndex].question}</p>
+            <p>Incorrect Answer, try again.</p>
+            <p hidden={hiddenAnswer}>{questionsOfCategory[questionIndex].answer}</p>
+            <button onClick={showAnswer}>Show answer</button>
+            <button onClick={handleTryAgain}>Try again</button>
+            </>
+            : (
             <>
             <button onClick={handleNext}>Next question</button>
             </>
