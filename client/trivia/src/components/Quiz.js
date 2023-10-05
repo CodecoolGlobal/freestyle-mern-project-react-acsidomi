@@ -1,8 +1,7 @@
-
 import React from "react";
 import { useState, useEffect } from "react";
 
-function Quiz(props) {
+function Quiz() {
   const categories = [
     "Art & Literature",
     "Language",
@@ -20,7 +19,7 @@ function Quiz(props) {
     "Sport & Leisure",
   ];
 
-const categories2 = [
+  const categories2 = [
     "artliterature",
     "language",
     "sciencenature",
@@ -40,118 +39,139 @@ const categories2 = [
   const [questionsOfCategory, setQuestionsOfCategory] = useState([]);
   const [showQuestion, setShowQuestion] = useState(false);
   const [nextQuestion, setNextQuestion] = useState(false);
-  const [answeredQuestions, setAnsweredQuestions] = useState([])
-  const [questionIndex, setQuestionIndex] = useState(0)
-  const [incorrectAnswer, setIncorrectAnswer] = useState(false)
-  const [hiddenAnswer, setHiddenAnswer] = useState(true)
-  const [answerStreak, setAnswerStreak] = useState(0)
+  const [answeredQuestions, setAnsweredQuestions] = useState([]);
+  const [questionIndex, setQuestionIndex] = useState(0);
+  const [incorrectAnswer, setIncorrectAnswer] = useState(false);
+  const [hiddenAnswer, setHiddenAnswer] = useState(true);
+  const [answerStreak, setAnswerStreak] = useState(0);
+  const [select, setSelect] = useState(true);
+  const [tryAgain, setTryAgain] = useState(true);
 
   async function handleChange(event) {
     const selectedCategory = event.target.value;
-    if (selectedCategory) {
-        try {
-            const url = `http://localhost:4000/api/quiz/${selectedCategory}`;
-            const resp = await fetch(url);
-            if (resp.ok) {
-            const questionsOfCategoryFetch = await resp.json();
-            setQuestionsOfCategory(questionsOfCategoryFetch);
-            } else {
-            console.error("Error fetching category data:", resp.statusText);
-            }
-        } catch (error) {
-            console.error("Error fetching category data:", error);
-        }
-        }
-    }
-
-    function handleNext() {
-        let randomIndex =  Math.round(Math.random()*questionsOfCategory.length)
-        if (answeredQuestions.includes(questionsOfCategory[randomIndex]._id)) {
-            randomIndex = Math.round(Math.random()*questionsOfCategory.length)
+    setSelect(false);
+    if (!selectedCategory) {
+      return;
+    } else if (selectedCategory) {
+      try {
+        const url = `http://localhost:4000/api/quiz/${selectedCategory}`;
+        const resp = await fetch(url);
+        if (resp.ok) {
+          const questionsOfCategoryFetch = await resp.json();
+          setQuestionsOfCategory(questionsOfCategoryFetch);
         } else {
-            setQuestionIndex(randomIndex)
-            setNextQuestion(false)
+          console.error("Error fetching category data:", resp.statusText);
         }
+      } catch (error) {
+        console.error("Error fetching category data:", error);
+      }
     }
-    function handleAnswer(event) {
-        event.preventDefault();
-        if (event.target.answer.value.toLowerCase() === questionsOfCategory[questionIndex].answer.toLowerCase()) {
-            let answeredQuest = [...answeredQuestions] 
-            answeredQuest.push(questionsOfCategory[questionIndex]._id)
-            setAnsweredQuestions(answeredQuest)
-            setAnswerStreak(answerStreak+1)
-            setNextQuestion(true);
-            return console.log("Correct!");
-        } else {
-            setIncorrectAnswer(true)
-            setNextQuestion(false);
-            return console.log("Try again!");
-        }
-    }
+  }
 
-    function handleTryAgain(){
-        setQuestionsOfCategory([])
-        setShowQuestion(false)
-        setNextQuestion(false)
-        setAnsweredQuestions([])
-        setQuestionIndex(0)
-        setIncorrectAnswer(false)
-        setHiddenAnswer(true)
-        setAnswerStreak(0)
+  function handleNext() {
+    let randomIndex = Math.round(Math.random() * questionsOfCategory.length);
+    if (answeredQuestions.includes(questionsOfCategory[randomIndex]._id)) {
+      randomIndex = Math.round(Math.random() * questionsOfCategory.length);
+    } else {
+      setQuestionIndex(randomIndex);
+      setNextQuestion(false);
     }
-    
-    function showAnswer() {
-        setHiddenAnswer(false)
+  }
+  function handleAnswer(event) {
+    event.preventDefault();
+    if (
+      event.target.answer.value.toLowerCase() ===
+      questionsOfCategory[questionIndex].answer.toLowerCase()
+    ) {
+      let answeredQuest = [...answeredQuestions];
+      answeredQuest.push(questionsOfCategory[questionIndex]._id);
+      setAnsweredQuestions(answeredQuest);
+      setAnswerStreak(answerStreak + 1);
+      setNextQuestion(true);
+      return console.log("Correct!");
+    } else {
+      setIncorrectAnswer(true);
+      setNextQuestion(false);
+      setTryAgain(false)
+      return console.log("Try again!");
     }
-    
-    
-    console.log("random question",questionsOfCategory[questionIndex]);
-    
-    return (
-        <div className="categories">
-        <label>Select a category: </label>
+  }
+
+  function handleTryAgain() {
+    setQuestionsOfCategory([]);
+    setShowQuestion(false);
+    setNextQuestion(false);
+    setAnsweredQuestions([]);
+    setQuestionIndex(0);
+    setIncorrectAnswer(false);
+    setHiddenAnswer(true);
+    setAnswerStreak(0);
+    setTryAgain(true)
+    setShowQuestion(false)
+    setSelect(true)
+    console.log("show quest",showQuestion, "tryagain",  tryAgain)
+  }
+
+  function showAnswer() {
+    setHiddenAnswer(false);
+  }
+
+  console.log("random question", questionsOfCategory[questionIndex]);
+
+  return (
+    <div className="categories">
+      
+      {tryAgain && !showQuestion ? (
+        <>
+        <label>Select a category: </label> <br></br>
         <select name="choose" id="choose" onChange={handleChange}>
-            <option>Select category</option>
-            {categories.map((category, index) => {
-            return (
-                <option key={categories2[index]} value={categories2[index]}>
+          <option>Select category</option>
+          {categories.map((category, index) => {
+              return (
+                  <option key={categories2[index]} value={categories2[index]}>
                 {category}
-                </option>
+              </option>
             );
-            })}
-        </select>
-        {!showQuestion ? (
-            <button onClick={() => setShowQuestion(true)}>Show question</button>
-        ) : !nextQuestion && !incorrectAnswer ? (
-            <>
-            <p>{questionsOfCategory[questionIndex].question}</p>
-            <form onSubmit={handleAnswer}>
-                <input
-                type="text"
-                name="answer"
-                placeholder="Type the answer"
-                ></input>
-                <button type="submit">Send answer</button>
-            </form>
-            </>
-        ) : !nextQuestion && incorrectAnswer ? 
-            <>
-            <p>{questionsOfCategory[questionIndex].question}</p>
-            <p>Incorrect Answer, try again.</p>
-            <p>Final score: {answerStreak}</p>
-            <p hidden={hiddenAnswer}>{questionsOfCategory[questionIndex].answer}</p>
-            <button onClick={showAnswer}>Show answer</button>
-            <button onClick={handleTryAgain}>Try again</button>
-            </>
-            : (
-            <>
-            <p>Current score: {answerStreak}</p>
-            <p>The answer was correct</p>
-            <button onClick={handleNext}>Next question</button>
-            </>
-        )}
-        </div>
-    );
+          })}
+        </select>{" "}
+        <br></br>
+        <button hidden={select} onClick={() => setShowQuestion(true)}>
+          Show question
+        </button>
+        </>
+      ) : !nextQuestion && !incorrectAnswer ? (
+        <>
+          <p>{questionsOfCategory[questionIndex].question}</p>
+          <form onSubmit={handleAnswer}>
+            <input
+              type="text"
+              name="answer"
+              placeholder="Type the answer"
+            ></input>{" "}
+            <br></br>
+            <button type="submit">Send answer</button>
+          </form>
+        </>
+      ) : !nextQuestion && incorrectAnswer ? (
+        <>
+          <p>{questionsOfCategory[questionIndex].question}</p>
+          <p>Incorrect Answer, try again.</p>
+          <p>Final score: {answerStreak}</p>
+          <p hidden={hiddenAnswer}>
+            {questionsOfCategory[questionIndex].answer}
+          </p>
+          <button onClick={showAnswer}>Show answer</button>
+          <button onClick={handleTryAgain}>Try again</button>
+        </>
+      ) : (
+        <>
+          <p>The answer was correct</p>
+          <p>Current score: {answerStreak}</p>
+          <button onClick={handleNext}>Next question</button>
+        </>
+      )}
+    </div>
+  );
 }
 
 export default Quiz;

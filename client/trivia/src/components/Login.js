@@ -48,19 +48,19 @@ function Login(props){
         <>
             <p>Invalid username or password. Try again!</p>
             <form onSubmit={handleSubmit}>
-                <label>Username:</label>
-                <input type="text" name="username" placeholder="Username"></input>
-                <label>Password:</label>
-                <input type="password" name="password" placeholder="Password"></input>
+                <label>Username:</label> <br></br>
+                <input type="text" name="username" placeholder="Username"></input> <br></br>
+                <label>Password:</label> <br></br>
+                <input type="password" name="password" placeholder="Password"></input> <br></br>
                 <button type="submit">Login</button>
             </form>
         </>
         : !loginSuccess ?
             <form onSubmit={handleSubmit}>
-                <label>Username:</label>
-                <input type="text" name="username" placeholder="Username"></input>
-                <label>Password:</label>
-                <input type="password" name="password" placeholder="Password"></input>
+                <label>Username:</label> <br></br> 
+                <input type="text" name="username" placeholder="Username"></input> <br></br>
+                <label>Password:</label> <br></br>
+                <input type="password" name="password" placeholder="Password"></input> <br></br>
                 <button type="submit">Login</button>
             </form>
             : <p>Logged in as {user}</p>

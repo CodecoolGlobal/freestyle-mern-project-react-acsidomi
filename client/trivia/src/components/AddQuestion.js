@@ -60,13 +60,13 @@ function AddQuestion(){
     return(
         <div className="newForm">
     <form onSubmit={handleSubmit}>
-        <label htmlFor="question">Question:</label>
-        <input type="text" name="question" id="question" placeholder="Type question" />
+        <label htmlFor="question">Question:</label> <br></br> 
+        <input type="text" name="question" id="question" placeholder="Type question" /> <br></br>
 
-        <label htmlFor="answer">Answer:</label>
-        <input type="text" name="answer" id="answer" placeholder="Type answer" />
+        <label htmlFor="answer">Answer:</label> <br></br>
+        <input type="text" name="answer" id="answer" placeholder="Type answer" /> <br></br>
 
-        <label htmlFor="category">Category:</label>
+        <label htmlFor="category">Category:</label> <br></br>
         <select name="category" id="category">
             <option>Select category</option>
             {categories.map((category, index) => (
@@ -74,9 +74,9 @@ function AddQuestion(){
                     {category}
                 </option>
             ))}
-        </select>
+        </select> <br></br>
         
-        <button type="submit">Add new question</button>
+        <button type="submit">Add new question</button> 
     </form>
 </div>
 

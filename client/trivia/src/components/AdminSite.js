@@ -125,10 +125,10 @@ function AdminSite(){
 
         <div className="editForm">
             <form onSubmit={handleSave}>
-            <label>Question: </label>
-            <input type="text" name="editQuestion" placeholder="Edit question"></input><br></br>
-            <label>Answer: </label>
-            <input type="text" name="editAnswer" placeholder="Edit answer"></input><br></br>
+            <label>Question: </label> <br></br>
+            <input type="text" name="editQuestion" placeholder="Edit question"></input><br></br> <br></br>
+            <label>Answer: </label> <br></br>
+            <input type="text" name="editAnswer" placeholder="Edit answer"></input><br></br> <br></br>
             <button type="submit">Save changes</button>
             </form>
         </div>
