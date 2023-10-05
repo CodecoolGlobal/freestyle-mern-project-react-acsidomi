@@ -1,4 +1,4 @@
-.App {
+ .App {
   text-align: center;
 }
 
@@ -44,7 +44,7 @@ body{
   background-size: cover;
 }
   button{
-  background-color: black;
+  background-color: rgb(19, 18, 18);
   color:white;
   
 }
@@ -68,4 +68,63 @@ img{
 }
 
 
+/* Gombok stílusai */
+button {
+  background-color: rgb(19, 18, 18);
+  color: white;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 5px; /* Kerekített sarok */
+  box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.3); /* Árnyék */
+  transition: background-color 0.3s, color 0.3s, transform 0.2s; /* Átmenetek */
+}
+
+button:hover {
+  cursor: pointer;
+  background-color: white;
+  color: black;
+  transform: scale(1.05); /* Kissé nagyobb méretűvé válás */
+
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  background-image: url("https://wallpapers.com/images/hd/question-mark-background-tghys36vjksf02r6.jpg");
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+/* Gombok formázása */
+button {
+  background-color: rgb(19, 18, 18);
+  color: white;
+  border: none;
+  border-radius: 5px; /* Kerekített sarkok */
+  padding: 10px 20px; /* Belső térköz a gombok körül */
+  margin: 5px; /* Külső térköz a gombok között */
+  box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2); /* Árnyék */
+}
+
+button:hover {
+  cursor: pointer;
+  background-color: white;
+  color: black;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  background-image: url("https://wallpapers.com/images/hd/question-mark-background-tghys36vjksf02r6.jpg");
+  background-repeat: no-repeat;
+  background-size: cover;
+  font-size: 16px; /* Betűméret */
+  overflow-y: scroll; /* Görgetősáv bekapcsolása */
+  scrollbar-width: thin; /* Görgetősáv vékonyítása */
+}
+
+p, span, div, 
+li, a {
+  font-weight: bold; /* Vastagabb szöveg */
+}
 
