@@ -1,6 +1,7 @@
 import  express from "express";
 import mongoose from "mongoose";
 import TriviaSchema from ".././model/TriviaSchema.js";
+import Users from ".././model/Users.js";
 import dotenv from "dotenv";
 import path from "path"
 
@@ -32,6 +33,20 @@ router.get("/:category", async (req, res) => {
         res.status(500).json({ message: "Server error" });
     }
 });
+
+router.get("/login/:username", async (req,res) => {
+    try {
+        const user = await Users.findOne({userName: req.params.username})
+        if(!user) {
+            return res.status(404).json({message: "User not found"})
+        }
+        console.log(user)
+        res.json(user)
+    } catch (error) {
+        console.error("Error fetching category data:", error);
+        res.status(500).json({ message: "Server error" });
+    }
+})
 
 router.post("/addNew", async (req, res) =>{
     try{

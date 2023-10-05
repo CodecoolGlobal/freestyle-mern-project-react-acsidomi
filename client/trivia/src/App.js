@@ -1,18 +1,21 @@
 import React from 'react';
 import './App.css';
 import Home from './components/Home.js';
-import Navbar from './components/Navbar';
-import Quiz from './components/Quiz';
+import Navbar from './components/Navbar.js';
+import Quiz from './components/Quiz.js';
 import {useState, useEffect} from "react";
-import AddQuestion from './components/AddQuestion';
+import AddQuestion from './components/AddQuestion.js';
+import Login from "./components/Login.js"
 
 function App() {
   const [showQuiz, setShowQuiz] = useState(false)
   const [showAddQuestion, setShowAddQuestion] = useState(false)
+  const [showLogin, setShowLogin] = useState(false)
+  const [hideAdmin, setHideAdmin] = useState(true)
   return (
     <div className="App">
-      <Navbar setShowQuiz={setShowQuiz} showQuiz={showQuiz} setShowAddQuestion={setShowAddQuestion} showAddQuestion={showAddQuestion}/>
-      {showQuiz ? <Quiz/> : showAddQuestion ?<AddQuestion/>  : <Home />}
+      <Navbar setShowQuiz={setShowQuiz} setShowAddQuestion={setShowAddQuestion} setShowLogin={setShowLogin} hideAdmin={hideAdmin} />
+      {showQuiz ? <Quiz/> : showAddQuestion ? <AddQuestion/>  : showLogin ? <Login setHideAdmin={setHideAdmin}/> : <Home />}
       
     </div>
   );
