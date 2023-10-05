@@ -5,9 +5,9 @@ function Navbar(props){
 
     return(
         <div className="navbar">
-            <button>Home</button>
-            <button onClick={()=> props.setShowQuiz(!props.showQuiz)}>Play the Trivia</button>
-            <button onClick={()=> props.setShowAddQuestion(true)}>Add question</button>
+            <button onClick={()=> {props.setShowAddQuestion(false); props.setShowQuiz(false)}}>Home</button>
+            <button onClick={()=> {props.setShowQuiz(true); props.setShowAddQuestion(false)}}>Play the Trivia</button>
+            <button onClick={()=> {props.setShowAddQuestion(true); props.setShowQuiz(false)}}>Add question</button>
             
         </div>
     )
