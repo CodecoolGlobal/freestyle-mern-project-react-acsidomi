@@ -1,4 +1,4 @@
- .App {
+.App {
   text-align: center;
 }
 
@@ -37,12 +37,6 @@
   }
 }
 
-body{
-
-  background-image: url("https://wallpapers.com/images/hd/question-mark-background-tghys36vjksf02r6.jpg");
-  background-repeat: no-repeat;
-  background-size: cover;
-}
   button{
   background-color: rgb(19, 18, 18);
   color:white;
@@ -59,11 +53,11 @@ img{
 } 
 
 .admin-category{
-  background-color: rgba(102, 59, 3, 0.712);
+  background-color: rgba(102, 59, 3, 0.5);
   width: 350px;
   margin: auto;
   margin-bottom: 15px;
-  color: rgb(56, 26, 2);
+  color: rgb(39, 18, 1);
   font-weight: bolder;
 }
 
@@ -92,7 +86,17 @@ body {
   padding: 0;
   background-image: url("https://wallpapers.com/images/hd/question-mark-background-tghys36vjksf02r6.jpg");
   background-repeat: no-repeat;
+  background-attachment: fixed;
+  background-position: center;
   background-size: cover;
+  size: cover;
+  overflow-y: scroll;
+  font-size: 16px; /* Betűméret */
+  backdrop-filter: sepia(50%);
+  position: absolute;
+  left: 0;
+  width: 100%;
+  min-height: 100%;
 }
 
 /* Gombok formázása */
@@ -112,16 +116,6 @@ button:hover {
   color: black;
 }
 
-body {
-  margin: 0;
-  padding: 0;
-  background-image: url("https://wallpapers.com/images/hd/question-mark-background-tghys36vjksf02r6.jpg");
-  background-repeat: no-repeat;
-  background-size: cover;
-  font-size: 16px; /* Betűméret */
-  overflow-y: scroll; /* Görgetősáv bekapcsolása */
-  scrollbar-width: thin; /* Görgetősáv vékonyítása */
-}
 
 p, span, div, 
 li, a {
