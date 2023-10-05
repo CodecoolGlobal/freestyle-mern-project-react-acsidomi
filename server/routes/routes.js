@@ -78,4 +78,18 @@ router.delete("/admin/delete/:id", async (req, res) =>{
     }
 })
 
+router.patch("/admin/edit/:id", async (req, res) =>{
+    try{
+        const updatedQuestion = await TriviaSchema.findByIdAndUpdate(req.params.id, req.body, {new:true})
+        if(!updatedQuestion){
+            return res.status(404).json({message: "Question not found"})
+        }
+        res.json(updatedQuestion)
+    }
+    catch(err){
+        console.error(err)
+        res.status(500).json({ message: "Server error" });
+    }
+})
+
 export default router
