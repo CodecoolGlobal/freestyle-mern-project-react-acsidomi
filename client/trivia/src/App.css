@@ -58,5 +58,14 @@ img{
   height: 470px;
 } 
 
+.admin-category{
+  background-color: rgba(102, 59, 3, 0.712);
+  width: 350px;
+  margin: auto;
+  margin-bottom: 15px;
+  color: rgb(56, 26, 2);
+  font-weight: bolder;
+}
+
 
 

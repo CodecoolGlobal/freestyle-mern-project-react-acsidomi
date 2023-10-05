@@ -25,7 +25,6 @@ router.get("/:category", async (req, res) => {
         if(!questions){
             return res.status(404).json({message: "Category not found"})
         }
-        console.log(questions)
         res.json(questions)
         
     } catch (error) {
@@ -40,7 +39,6 @@ router.get("/login/:username", async (req,res) => {
         if(!user) {
             return res.status(404).json({message: "User not found"})
         }
-        console.log(user)
         res.json(user)
     } catch (error) {
         console.error("Error fetching category data:", error);
@@ -62,6 +60,21 @@ router.post("/addNew", async (req, res) =>{
     catch (error){
         console.error("Cannot save the new data",error)
         res.status(500).json({ message: "Server error" });
+    }
+})
+
+router.delete("/admin/delete/:id", async (req, res) =>{
+    try {
+        const deleteQuestion = await TriviaSchema.findByIdAndDelete({_id: req.params.id})
+        if(!deleteQuestion){
+            return res.status(404).json({message: "Question not found"})
+        }
+        res.json(deleteQuestion)
+        
+    } catch (error) {
+        console.error(error)
+        res.status(500).json({ message: "Server error" });
+        
     }
 })
 
