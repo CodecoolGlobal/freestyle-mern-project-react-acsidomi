@@ -9,6 +9,7 @@ function Navbar(props){
             <button onClick={() => props.setPage("/quiz")}>Play the Trivia</button>
             <button onClick={() => props.setPage("/addQuestion")}>Add question</button>
             <button onClick={() => props.setPage("/login")}>Login</button>
+            <button onClick={() => props.setPage("/registration")}>Registration</button>
             <button onClick={() => props.setPage("/admin")} hidden={props.hideAdmin}>Admin site</button>
         </div>
     )

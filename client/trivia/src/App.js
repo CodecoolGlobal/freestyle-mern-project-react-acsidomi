@@ -7,6 +7,7 @@ import {useState, useEffect} from "react";
 import AddQuestion from './components/AddQuestion.js';
 import Login from "./components/Login.js"
 import AdminSite from './components/AdminSite';
+import Registration from './components/Registration'
 
 function App() {
   // const [showQuiz, setShowQuiz] = useState(false)
@@ -27,7 +28,9 @@ function App() {
       case ("/login"): 
         return (<Login setHideAdmin={setHideAdmin}/>);
       case ("/admin"):
-        return (<AdminSite />)
+        return (<AdminSite />);
+      case ("/registration"): 
+        return (<Registration />)
     }
   }
 
