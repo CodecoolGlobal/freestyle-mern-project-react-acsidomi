@@ -9,16 +9,32 @@ import Login from "./components/Login.js"
 import AdminSite from './components/AdminSite';
 
 function App() {
-  const [showQuiz, setShowQuiz] = useState(false)
-  const [showAddQuestion, setShowAddQuestion] = useState(false)
-  const [showLogin, setShowLogin] = useState(false)
+  // const [showQuiz, setShowQuiz] = useState(false)
+  // const [showAddQuestion, setShowAddQuestion] = useState(false)
+  // const [showLogin, setShowLogin] = useState(false)
   const [hideAdmin, setHideAdmin] = useState(true)
-  const [showAdminSite, setShowAdminSite] = useState(false)
+  // const [showAdminSite, setShowAdminSite] = useState(false)
+  const [page, setPage] = useState("/")
+
+  function renderPage() {
+    switch(page) {
+      case ("/") : 
+      return (<Home />);
+      case ("/quiz"): 
+      return (<Quiz />);
+      case ("/addQuestion"):
+        return (<AddQuestion />);
+      case ("/login"): 
+        return (<Login setHideAdmin={setHideAdmin}/>);
+      case ("/admin"):
+        return (<AdminSite />)
+    }
+  }
+
   return (
     <div className="App">
-      <Navbar setShowQuiz={setShowQuiz} setShowAddQuestion={setShowAddQuestion} setShowLogin={setShowLogin} hideAdmin={hideAdmin} setShowAdminSite={setShowAdminSite}/>
-      {showQuiz ? <Quiz/> : showAddQuestion ? <AddQuestion/>  : showLogin ? <Login setHideAdmin={setHideAdmin}/> : showAdminSite ? <AdminSite /> : <Home />}
-      
+      <Navbar setPage={setPage} hideAdmin={hideAdmin}/>
+      {renderPage()}
     </div>
   );
 }
