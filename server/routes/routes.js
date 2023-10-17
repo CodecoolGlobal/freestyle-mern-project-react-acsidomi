@@ -92,4 +92,25 @@ router.patch("/admin/edit/:id", async (req, res) =>{
     }
 })
 
+router.post("/register", async (req, res) => {
+    try {
+        const { username, email, password } = req.body;
+        const existingUser = await Users.findOne({ $or: [{ userName: username }, { email: email }] })
+        if (existingUser) {
+            return res.status(400).json({ message: "Username or email already in use" });
+        }
+        const newUser = new Users({
+            userName: username,
+            email,
+            password, 
+        });
+        const savedUser = await newUser.save();
+        res.status(201).json(savedUser); 
+    } catch (error) {
+        console.error("Error registering user:", error);
+        res.status(500).json({ message: "Server error" });
+    }
+});
+
+
 export default router
