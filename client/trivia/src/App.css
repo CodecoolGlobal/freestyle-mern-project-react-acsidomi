@@ -48,9 +48,7 @@ button:hover{
   color:black
 }
 
-img{
-  height: 470px;
-} 
+
 
 .admin-category{
   background-color: rgba(248, 121, 168, 0.35);
@@ -125,3 +123,6 @@ li, a {
   font-weight: bold; /* Vastagabb szöveg */
 }
 
+.bulb-image:hover {
+  fill: yellow
+} 
