@@ -82,11 +82,24 @@ router.delete("/admin/delete/:id", async (req, res) =>{
 
 router.patch("/admin/edit/:id", async (req, res) =>{
     try{
+
         const updatedQuestion = await TriviaSchema.findByIdAndUpdate(req.params.id, req.body, {new:true})
         if(!updatedQuestion){
             return res.status(404).json({message: "Question not found"})
         }
         res.json(updatedQuestion)
+    }
+    catch(err){
+        console.error(err)
+        res.status(500).json({ message: "Server error" });
+    }
+})
+
+router.patch("/user/profile/edit/:id", async (req, res) =>{
+    try{
+        const hashedPassword = bcrypt.hashSync(req.body.password, saltRounds)
+        const updatedPassword = await Users.findByIdAndUpdate(req.params.id, {password:hashedPassword}, {new:true})
+        res.json(updatedPassword)
     }
     catch(err){
         console.error(err)
