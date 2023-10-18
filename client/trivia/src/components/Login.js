@@ -1,5 +1,7 @@
 import react from "react";
 import { useState, useEffect } from "react";
+import bcrypt from "bcryptjs"
+
 
 
 function Login(props){
@@ -27,8 +29,11 @@ function Login(props){
     async function handleSubmit(event) {
         event.preventDefault()
         const userData = await fetchUsers(event.target.username.value)
+        const hashedPassword = userData.password
+        const givenPassword = event.target.password.value
+        
 
-        if (userData && userData.password === event.target.password.value && userData.userName === event.target.username.value) {
+        if (userData && bcrypt.compareSync(givenPassword, hashedPassword) && userData.userName === event.target.username.value) {
             if (userData.userName === "admin") {
                 props.setHideAdmin(false)
             }
@@ -39,7 +44,6 @@ function Login(props){
             setInvalidLogin(true)
             console.log("Invalid password or username")
         }
-
     }
 
     return (
