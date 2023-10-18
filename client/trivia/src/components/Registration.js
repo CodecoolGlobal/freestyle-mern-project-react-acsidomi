@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 
-function Registration() {
+function Registration(props) {
 
     async function handleSubmit(event) {
         event.preventDefault()
@@ -47,6 +47,7 @@ function Registration() {
                 ></input>
                 <button type="submit">Register</button>
             </form>
+            <button type="button" onClick={() => props.setPage("/")}>Cancel</button>
         </div>
     )
 

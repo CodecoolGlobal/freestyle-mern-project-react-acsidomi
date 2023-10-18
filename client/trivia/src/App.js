@@ -30,7 +30,7 @@ function App() {
       case ("/admin"):
         return (<AdminSite />);
       case ("/registration"): 
-        return (<Registration />)
+        return (<Registration setPage={setPage}/>)
     }
   }
 

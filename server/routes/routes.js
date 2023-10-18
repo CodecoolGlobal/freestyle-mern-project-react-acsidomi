@@ -3,7 +3,9 @@ import mongoose from "mongoose";
 import TriviaSchema from ".././model/TriviaSchema.js";
 import Users from ".././model/Users.js";
 import dotenv from "dotenv";
-import path from "path"
+import path from "path";
+import bcrypt from "bcrypt";
+const saltRounds = 10;
 
 dotenv.config({
     path: path.join('./.env')
@@ -102,7 +104,7 @@ router.post("/register", async (req, res) => {
         const newUser = new Users({
             userName: username,
             email,
-            password, 
+            password: bcrypt.hashSync(password, saltRounds) 
         });
         const savedUser = await newUser.save();
         res.status(201).json(savedUser); 
