@@ -1,7 +1,7 @@
 import react from "react";
 import { useEffect, useState } from "react";
 
-function Home() {
+function Home(props) {
   
   return (
     <div className="quiz">
@@ -17,10 +17,11 @@ function Home() {
         preserveAspectRatio="xMidYMid meet"
       >
         <g
-          class="bulb-image"
+          className="bulb-image"
           transform="translate(0.000000,1519.000000) scale(0.100000,-0.100000)"
           fill="#000000"
           stroke="none"
+          onClick={() => props.setPage("/quiz")}
         >
           <path
             d="M3745 15169 c-161 -13 -449 -55 -610 -90 -1159 -253 -2155 -968

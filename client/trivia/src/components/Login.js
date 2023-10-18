@@ -40,6 +40,7 @@ function Login(props){
             props.hideButtons(true)
             props.setHideLogout(false)
             props.setPage("/profile")
+            localStorage.setItem('userInfo', JSON.stringify(userData))
         } else {
             setInvalidLogin(true)
             console.log("Invalid password or username")

@@ -23,7 +23,7 @@ function App() {
   function renderPage() {
     switch(page) {
       case ("/") : 
-      return (<Home />);
+      return (<Home setPage={setPage}/>);
       case ("/quiz"): 
       return (<Quiz />);
       case ("/addQuestion"):
@@ -35,7 +35,7 @@ function App() {
       case ("/registration"): 
         return (<Registration setPage={setPage}/>)
       case ("/profile"):
-        return (<UserProfile setPage={setPage}  />)
+        return (<UserProfile setPage={setPage}/>)
     }
   }
 
