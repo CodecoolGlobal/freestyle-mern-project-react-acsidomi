@@ -9,6 +9,7 @@ import Login from "./components/Login.js"
 import AdminSite from './components/AdminSite';
 import Registration from './components/Registration'
 import UserProfile from './components/UserProfile';
+import Leaderboard from "./components/Leaderboard"
 
 function App() {
   // const [showQuiz, setShowQuiz] = useState(false)
@@ -36,6 +37,8 @@ function App() {
         return (<Registration setPage={setPage}/>)
       case ("/profile"):
         return (<UserProfile setPage={setPage}/>)
+      case ("/leaderboard"): 
+        return (<Leaderboard />)
     }
   }
 

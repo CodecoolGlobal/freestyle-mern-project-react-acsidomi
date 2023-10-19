@@ -128,6 +128,18 @@ router.post("/register", async (req, res) => {
     }
 });
 
+router.get("/users/leaderboard", async (req,res) => {
+    try {
+        const scores = await Score.find().sort({score: "desc"}).limit(10).populate("user")
+        if (!scores) {
+            return res.status(404).json({message: "Score not found"})
+        }
+        res.json(scores)
+    } catch (error) {
+        console.log(error)
+    }
+})
+
 router.post("/user/score", async (req, res) => {
     try {
         const { score, user} = req.body
