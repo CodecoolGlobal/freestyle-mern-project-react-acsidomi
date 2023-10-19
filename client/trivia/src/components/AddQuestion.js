@@ -51,6 +51,10 @@ function AddQuestion(){
         })
         const newData = await response.json()
         console.log(newData)
+        alert("Question is added!")
+        event.target.category.value = "Select category"
+        event.target.question.value =""
+        event.target.answer.value =""
         }
         catch(err){ 
             console.error("Error fetching category data:", err);
