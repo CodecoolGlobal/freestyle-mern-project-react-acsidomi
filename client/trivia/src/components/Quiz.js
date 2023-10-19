@@ -35,7 +35,8 @@ function Quiz() {
     "religionmythology",
     "sportsleisure",
   ];
-
+  const userData = JSON.parse(localStorage.getItem('userInfo'))
+  console.log("quiz", userData)
   const [questionsOfCategory, setQuestionsOfCategory] = useState([]);
   const [showQuestion, setShowQuestion] = useState(false);
   const [nextQuestion, setNextQuestion] = useState(false);
@@ -77,7 +78,8 @@ function Quiz() {
       setNextQuestion(false);
     }
   }
-  function handleAnswer(event) {
+
+  async function handleAnswer(event) {
     event.preventDefault();
     if (
       event.target.answer.value.toLowerCase() ===
@@ -93,6 +95,24 @@ function Quiz() {
       setIncorrectAnswer(true);
       setNextQuestion(false);
       setTryAgain(false)
+      try {
+        const resp = await fetch("http://localhost:4000/api/quiz/user/score",{
+        method: "POST",
+        headers:{
+          "Content-Type": "application/json"
+        },
+        body: JSON.stringify({
+          score: answerStreak,
+          user: userData._id
+        })
+        })
+        if(resp.ok){
+          console.log("YAYYY")
+          alert(`Your final score is ${answerStreak}`)
+        }
+      } catch (error) {
+        console.error(error)
+      }
       return console.log("Try again!");
     }
   }
@@ -109,7 +129,7 @@ function Quiz() {
     setTryAgain(true)
     setShowQuestion(false)
     setSelect(true)
-    console.log("show quest",showQuestion, "tryagain",  tryAgain)
+    console.log("show quest", showQuestion, "tryagain", tryAgain)
   }
 
   function showAnswer() {
@@ -120,24 +140,24 @@ function Quiz() {
 
   return (
     <div className="categories">
-      
+
       {tryAgain && !showQuestion ? (
         <>
-        <label>Select a category: </label> <br></br>
-        <select name="choose" id="choose" onChange={handleChange}>
-          <option>Select category</option>
-          {categories.map((category, index) => {
+          <label>Select a category: </label> <br></br>
+          <select name="choose" id="choose" onChange={handleChange}>
+            <option>Select category</option>
+            {categories.map((category, index) => {
               return (
-                  <option key={categories2[index]} value={categories2[index]}>
-                {category}
-              </option>
-            );
-          })}
-        </select>{" "}
-        <br></br>
-        <button hidden={select} onClick={() => setShowQuestion(true)}>
-          Show question
-        </button>
+                <option key={categories2[index]} value={categories2[index]}>
+                  {category}
+                </option>
+              );
+            })}
+          </select>{" "}
+          <br></br>
+          <button hidden={select} onClick={() => setShowQuestion(true)}>
+            Show question
+          </button>
         </>
       ) : !nextQuestion && !incorrectAnswer ? (
         <>

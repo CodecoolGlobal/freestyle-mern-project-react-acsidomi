@@ -2,6 +2,7 @@ import  express from "express";
 import mongoose from "mongoose";
 import TriviaSchema from ".././model/TriviaSchema.js";
 import Users from ".././model/Users.js";
+import Score from "../model/Score.js";
 import dotenv from "dotenv";
 import path from "path";
 import bcrypt from "bcrypt";
@@ -126,6 +127,21 @@ router.post("/register", async (req, res) => {
         res.status(500).json({ message: "Server error" });
     }
 });
+
+router.post("/user/score", async (req, res) => {
+    try {
+        const { score, user} = req.body
+
+        const newScore = new Score({
+            score: score,
+            user: user
+        })
+        const savedScore = await newScore.save()
+        res.status(201).json(savedScore)
+    } catch (error) {
+        console.error(error)
+    }
+})
 
 
 export default router

@@ -20,8 +20,9 @@ function UserProfile(props) {
                 body: JSON.stringify({password:newPassword})
             })
         alert("Changes are saved!")   
+        event.target.password.value=""
+        setChangePassword(true)
         }
-        
         catch (error) {
             console.error(error)
         }
