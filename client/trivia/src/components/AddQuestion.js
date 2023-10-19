@@ -80,7 +80,7 @@ function AddQuestion(){
             ))}
         </select> <br></br>
         
-        <button type="submit">Add new question</button> 
+        <button id="add" type="submit">Add new question</button> 
     </form>
 </div>
 

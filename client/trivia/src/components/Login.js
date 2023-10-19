@@ -57,7 +57,7 @@ function Login(props){
                 <input type="text" name="username" placeholder="Username"></input> <br></br>
                 <label>Password:</label> <br></br>
                 <input type="password" name="password" placeholder="Password"></input> <br></br>
-                <button type="submit">Login</button>
+                <button id="login" type="submit">Login</button>
             </form>
         </>
         : !loginSuccess ?
@@ -66,7 +66,7 @@ function Login(props){
                 <input type="text" name="username" placeholder="Username"></input> <br></br>
                 <label>Password:</label> <br></br>
                 <input type="password" name="password" placeholder="Password"></input> <br></br>
-                <button type="submit">Login</button>
+                <button id="logIn" type="submit">Login</button>
             </form>
             : <>
             <p>Logged in as {user.username}</p>

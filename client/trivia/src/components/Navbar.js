@@ -3,6 +3,15 @@ import React from "react";
 
 function Navbar(props){
 
+    function confirm(){
+
+        const confirm =window.confirm("Log out?")
+        if(confirm){
+            alert("You logged out!")
+            localStorage.clear();
+        }
+    }
+
     return(
         <div className="navbar">
             <button onClick={() => props.setPage("/")}>Home</button>
@@ -13,7 +22,7 @@ function Navbar(props){
             <button onClick={() => {props.setPage("/registration")}} hidden={props.hideButtons}>Registration</button>
             <button onClick={() => props.setPage("/admin")} hidden={props.hideAdmin}>Admin site</button>
             <button onClick={() => props.setPage("/profile")} hidden={!props.hideButtons}>User profile</button>
-            <button onClick={() =>{props.setPage("/"); props.setHideButtons(false); props.setHideLogout(true); localStorage.clear()}} hidden={props.hideLogout}>Logout</button>
+            <button onClick={() =>{props.setPage("/"); props.setHideButtons(false); props.setHideLogout(true); confirm()}} hidden={props.hideLogout}>Logout</button>
         </div>
     )
 }

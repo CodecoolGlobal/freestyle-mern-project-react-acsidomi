@@ -155,7 +155,7 @@ function Quiz() {
             })}
           </select>{" "}
           <br></br>
-          <button hidden={select} onClick={() => setShowQuestion(true)}>
+          <button id="show" hidden={select} onClick={() => setShowQuestion(true)}>
             Show question
           </button>
         </>
@@ -169,25 +169,25 @@ function Quiz() {
               placeholder="Type the answer"
             ></input>{" "}
             <br></br>
-            <button type="submit">Send answer</button>
+            <button id="send" type="submit">Send answer</button>
           </form>
         </>
       ) : !nextQuestion && incorrectAnswer ? (
         <>
           <p>{questionsOfCategory[questionIndex].question}</p>
-          <p>Incorrect Answer, try again.</p>
+          <p className="incorrect-answer-text">Incorrect Answer, try again.</p>
           <p>Final score: {answerStreak}</p>
           <p hidden={hiddenAnswer}>
             {questionsOfCategory[questionIndex].answer}
           </p>
-          <button onClick={showAnswer}>Show answer</button>
-          <button onClick={handleTryAgain}>Try again</button>
+          <button id="answer" onClick={showAnswer}>Show answer</button>
+          <button id="again" onClick={handleTryAgain}>Try again</button>
         </>
       ) : (
         <>
-          <p>The answer was correct</p>
+          <p className="correct-answer-text">The answer was correct</p>
           <p>Current score: {answerStreak}</p>
-          <button onClick={handleNext}>Next question</button>
+          <button id="next" onClick={handleNext}>Next question</button>
         </>
       )}
     </div>

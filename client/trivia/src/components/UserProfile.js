@@ -33,14 +33,14 @@ function UserProfile(props) {
             <h1>Welcome, {userData.userName}!</h1>
             <h2>Your profile data:</h2>
             <p>Email: {userData.email}</p>
-            <p>Password: <button onClick={() => setChangePassword(!changePassword)}>Change Password</button></p>
+            <p>Password: <button id="change" onClick={() => setChangePassword(!changePassword)}>Change Password</button></p>
             <div hidden={changePassword}>
                 <form onSubmit={handleSubmit}>
                     <label>Password:</label>
                     <input type="password"
                         name="password">
                     </input>
-                    <button type="submit">Save</button>
+                    <button id="save" type="submit">Save</button>
                 </form>
             </div>
         </div>

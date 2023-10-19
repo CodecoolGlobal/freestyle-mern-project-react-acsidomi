@@ -61,7 +61,9 @@ function AdminSite(){
         }
     
     async function handleDelete(id){
-        try {
+        const confirm = window.confirm("Are you sure you want delete this question?")
+        if(confirm){
+            try {
             const resp = await fetch(`http://localhost:4000/api/quiz/admin/delete/${id}`,{
                 method: "DELETE"
             })
@@ -73,6 +75,8 @@ function AdminSite(){
         } catch (error) {
             console.error(error)
         }
+        }
+        
     }
 
     async function handleSave(event){
