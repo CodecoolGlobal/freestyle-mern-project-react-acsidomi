@@ -28,16 +28,15 @@
 
 ## Quick Links
 
-> - [ Overview](#-overview)
-> - [ Features](#-features)
-> - [ Repository Structure](#-repository-structure)
-> - [ Modules](#-modules)
-> - [ Getting Started](#-getting-started)
->   - [ Installation](#-installation)
->   - [ Running freestyle-mern-project-react-acsidomi](#-running-freestyle-mern-project-react-acsidomi)
-> - [ Project Roadmap](#-project-roadmap)
-> - [ Contributing](#-contributing)
-> - [ Acknowledgments](#-acknowledgments)
+> - [ Overview](#overview)
+> - [ Features](#features)
+> - [ Repository Structure](#repository-structure)
+> - [ Modules](#modules)
+> - [ Getting Started](#getting-started)
+>   - [ Installation](#installation)
+>   - [ Running freestyle-mern-project-react-acsidomi](#running-freestyle-mern-project-react-acsidomi)
+> - [ Contributing](#contributing)
+> - [ Acknowledgments](#acknowledgments)
 
 ---
 
