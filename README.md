@@ -206,7 +206,7 @@ cd freestyle-mern-project-react-acsidomi
 npm install
 ```
 
-###  Running freestyle-mern-project-react-acsidomi
+### Running freestyle-mern-project-react-acsidomi
 
 Use the following command to run freestyle-mern-project-react-acsidomi:
 
