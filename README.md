@@ -23,6 +23,7 @@
 	<img src="https://img.shields.io/badge/Express-000000.svg?style=flat&logo=Express&logoColor=white" alt="Express">
   <img src="https://img.shields.io/badge/MongoDB-47A248.svg?style=flat&logo=MongoDB&logoColor=white" alt="MongoDB">
   <img src="https://img.shields.io/badge/Node.js-000000.svg?style=flat&logo=node.js&logoColor=white" alt="Node.js">
+	<img src="https://img.shields.io/badge/Mongoose-000000.svg?style=flat&logo=Mongoose&logoColor=white" alt="mongoose">
 </p>
 <hr>
 
