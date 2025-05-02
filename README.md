@@ -16,14 +16,30 @@
 		<em>Developed with the software and tools below.</em>
 </p>
 <p align="center">
-	<img src="https://img.shields.io/badge/JavaScript-F7DF1E.svg?style=flat&logo=JavaScript&logoColor=black" alt="JavaScript">
-	<img src="https://img.shields.io/badge/HTML5-E34F26.svg?style=flat&logo=HTML5&logoColor=white" alt="HTML5">
-	<img src="https://img.shields.io/badge/React-61DAFB.svg?style=flat&logo=React&logoColor=black" alt="React">
-	<img src="https://img.shields.io/badge/JSON-000000.svg?style=flat&logo=JSON&logoColor=white" alt="JSON">
-	<img src="https://img.shields.io/badge/Express-000000.svg?style=flat&logo=Express&logoColor=white" alt="Express">
-  <img src="https://img.shields.io/badge/MongoDB-47A248.svg?style=flat&logo=MongoDB&logoColor=white" alt="MongoDB">
-  <img src="https://img.shields.io/badge/Node.js-000000.svg?style=flat&logo=node.js&logoColor=white" alt="Node.js">
-	<img src="https://img.shields.io/badge/Mongoose-000000.svg?style=flat&logo=Mongoose&logoColor=white" alt="mongoose">
+	<a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript" target="_blank">
+  		<img src="https://img.shields.io/badge/JavaScript-F7DF1E.svg?style=flat&logo=JavaScript&logoColor=black" alt="JavaScript">
+	</a>
+	<a href="https://developer.mozilla.org/en-US/docs/Glossary/HTML5" target="_blank>
+		<img src="https://img.shields.io/badge/HTML5-E34F26.svg?style=flat&logo=HTML5&logoColor=white" alt="HTML5">	
+	</a>
+	<a href="https://react.dev/reference/react" target="_blank">
+		<img src="https://img.shields.io/badge/React-61DAFB.svg?style=flat&logo=React&logoColor=black" alt="React">
+	</a>
+	<a href="https://www.json.org/json-en.html" target="_blank">
+		<img src="https://img.shields.io/badge/JSON-000000.svg?style=flat&logo=JSON&logoColor=white" alt="JSON">
+	</a>
+	<a href="https://expressjs.com" target="_blank">
+		<img src="https://img.shields.io/badge/Express-000000.svg?style=flat&logo=Express&logoColor=white" alt="Express">
+	</a>
+	<a href="https://www.mongodb.com/docs/" target="_blank">
+  		<img src="https://img.shields.io/badge/MongoDB-47A248.svg?style=flat&logo=MongoDB&logoColor=white" alt="MongoDB">
+	</a>
+	<a href="https://nodejs.org/en" target="_blank">
+  		<img src="https://img.shields.io/badge/Node.js-000000.svg?style=flat&logo=node.js&logoColor=white" alt="Node.js">
+	</a>
+	<a href="https://mongoosejs.com" target="_blank">
+		<img src="https://img.shields.io/badge/Mongoose-000000.svg?style=flat&logo=Mongoose&logoColor=white" alt="mongoose">
+	</a>
 </p>
 <hr>
 
