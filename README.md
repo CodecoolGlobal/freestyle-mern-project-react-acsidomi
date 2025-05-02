@@ -43,6 +43,8 @@
 </p>
 <hr>
 
+![Trivia game home page](./assets/trivia_home.png)
+
 ## Quick Links
 
 > - [ Overview](#overview)
